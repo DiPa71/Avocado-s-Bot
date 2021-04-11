@@ -38,9 +38,9 @@ client.on('message', (message) => {
             }
         }
 
-        if (command == "jump")
-            distube.jump(message, parseInt(args[0]))
-            .catch(err => message.channel.send("Invalid song number."));
+        // if (command == "jump")
+        //     distube.jump(message, parseInt(args[0]))
+        //     .catch(err => message.channel.send("Invalid song number."));
 
         if (commando == "queue" || commando == "q") {
             let queue = distube.getQueue(message);
