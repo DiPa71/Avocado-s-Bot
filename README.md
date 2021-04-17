@@ -20,4 +20,4 @@
 <p> $queue or q - Show queue of songs</p>
 <img src="./readmeimg/cap4.PNG" alt="">
 <h2>Contributing</h2>
-If you are interested in reporting/fixing issues and contributing directly to the code base, please see [CONTRIBUTING.md](CONTRIBUTING.md) for more information on what we're looking for and how to get started.
+If you are interested in reporting/fixing issues and contributing directly to the code base conntact me on my E-mail.
