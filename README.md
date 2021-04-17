@@ -1,5 +1,5 @@
 <h1>AVOCADOS NETWORK BOT 🥑</h1>
-<div style="text-align:center">
+<div style="margin: 0 auto;">
     <img src="./readmeimg/logo.png" alt="">
 </div><br>
     <img src="./readmeimg/tag1.png" alt="">
