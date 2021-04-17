@@ -17,7 +17,11 @@ client.on('message', (message) => {
     console.log(msg)
         // if (message.author.bot) return
     if (message.content.startsWith(config.prefix)) {
-        let [commando, ...args] = message.content.trim().substring(config.prefix.length).split(/\s+/);
+        let [commando, ...args] = message.content
+            .toLowerCase()
+            .trim()
+            .substring(config.prefix.length)
+            .split(/\s+/);
         if (commando === "kick") {
             if (args.length === 0) return message.reply(`${config.prefix}kick [User] [Reason]`)
             const usr = message.guild.members.cache.get(args[0])
@@ -28,15 +32,19 @@ client.on('message', (message) => {
             } else {
                 message.reply('Usuario no encontrado')
             }
-        }
-        if (commando === "spam") {
+        } else if (commando === "spam") {
             if (args.length === 0) return message.reply(`${config.prefix}Spam [link a spamear] [numero de bueltas]`);
             let n = args[args.length - 1]
             for (let i = 0; i < n; i++) {
                 args = args.filter(item => item !== n)
                 message.channel.send(`${args.join(' ')} Spam no: ${i+1}`)
             }
-        }
+        } else
+        if (commando === "name") {
+            if (args.length === 0) return message.reply(`${config.prefix}name [bot name]`);
+            let n = args.length
+            message.channel.send(`/nick ${args.join(' ')}`)
+        } else
 
         // if (command == "jump")
         //     distube.jump(message, parseInt(args[0]))
@@ -51,30 +59,29 @@ client.on('message', (message) => {
             } else {
                 message.channel.send(`\`My dear ${message.author.tag} queue is empty...\``)
             }
-        }
+        } else
         if (commando === "help" || commando == "h") {
-            message.reply(`\`Comandos: \n ${config.prefix}spam [link a spamear] [numero de bueltas] \n ${config.prefix}kick [User] [Reason]\``)
-            message.channel.send(`\`My dear ${message.author.tag} queue is empty...\``)
-        }
+            message.reply(`\`Bot commands:\n ${config.prefix}kick [User] [Reason]\n ${config.prefix}Spam [link a spamear] [numero de bueltas] \n ${config.prefix}play or p [music lick or search] - Play or search a song \n ${config.prefix}loop or lp - Loop mode [on / off]\n ${config.prefix}stop or s - Stop the queue \n ${config.prefix}skip or n - Skip the current song \n ${config.prefix}3d, bassboost, echo, karaoke, nightcore, vaporwave - set an efect to the song \n ${config.prefix}queue or q - Show queue song\n\``)
+        } else
         if (commando == "play" || commando == "p") {
             if (args.length === 0) return message.reply(`\`${config.prefix}play [music lick or search] - Play or search a song\``);
             distube.play(message, args.join(" "));
-        }
+        } else
 
         if (["repeat", "loop", "lp"].includes(commando)) {
             distube.setRepeatMode(message, parseInt(args[0]));
 
-        }
+        } else
         if (commando == "stop" || commando == "s") {
             distube.stop(message);
             message.channel.send("\`Stopped the music!\`");
 
-        }
+        } else
         if (commando == "skip" || commando == "n") {
 
             distube.skip(message);
 
-        }
+        } else
         if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(commando)) {
             let filter = distube.setFilter(message, commando);
             message.channel.send("\`Current queue filter: \`" + (filter || "Off"));
