@@ -1,8 +1,9 @@
 <h1>AVOCADOS NETWORK BOT 🥑</h1>
 <div style="text-align:center">
     <img src="./readmeimg/logo.png" alt="">
+</div><br>
     <img src="./readmeimg/tag1.png" alt="">
-</div>
+
 
 <p>Welcome to the Avocados Network Bot, this Bot was developed with node.js and represents our company Avocados Network, this bot is open source, so if you want to contribute, you are free to do so.</p><br>
 ## How it works?
